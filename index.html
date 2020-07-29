@@ -34,10 +34,10 @@
           Basic
         </h3>
         <div class="c-card__price">
-          <div class="c-card__price--hide"> 
+          <div class="c-card__price-number js-hide"> 
             <span class="c-card__symbol">&dollar;</span>19.99
           </div> 
-          <div class="c-card__price--show">
+          <div class="c-card__price-number">
             <span class="c-card__symbol">&dollar;</span>199.99
           </div> 
         </div>
@@ -53,10 +53,10 @@
           Professional
         </h3>
         <div class="c-card__price c-card__price--light">
-          <div class="c-card__price--show">
+          <div class="c-card__price-number js-hide">
             <span class="c-card__symbol">&dollar;</span>24.99
           </div> 
-          <div class="c-card__price--hide">
+          <div class="c-card__price-number">
             <span class="c-card__symbol">&dollar;</span>249.99
           </div> 
         </div>
@@ -72,10 +72,10 @@
           Master
         </h3>
         <div class="c-card__price">
-          <div class="c-card__price--show">
+          <div class="c-card__price-number js-hide">
             <span class="c-card__symbol">&dollar;</span>39.99
           </div> 
-          <div class="c-card__price--hide">
+          <div class="c-card__price-number">
             <span class="c-card__symbol">&dollar;</span>399.99
           </div> 
         </div>
@@ -92,5 +92,31 @@
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
     Coded by <a href="#">Daniel Colorado Tostado</a>.
   </div>
+  <script>
+    let cards = [];
+    const button = document.querySelector('.c-switch__input');
+    document.addEventListener("keyup",(e)=>{
+      if(e.keyCode === 39 || e.keyCode === 37){
+        button.click();
+      }
+    });
+    document.addEventListener("click",(e)=>{
+      if(e.target.matches(".c-switch__input")){
+        cards = document.querySelectorAll(".c-card__price-number"); 
+        changeState();  
+      }
+    });
+
+    function changeState() {
+      cards.forEach(element => {
+        if(element.classList.contains("js-hide"))
+        {
+          element.classList.remove('js-hide');
+        }else{
+          element.classList.add('js-hide');
+        }
+      });
+    }
+  </script>
 </body>
 </html>
